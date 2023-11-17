@@ -35,12 +35,16 @@ func main() {
 			log.Fatalf("error serving grpc: %v\n", err)
 		}
 	}()
+
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
 	mux := runtime.NewServeMux()
+
 	opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
+
+	err = pb.RegisterCalculatorServiceHandlerFromEndpoint(ctx, mux, "localhost:8080", opts)
 	err = pb.RegisterBookServiceHandlerFromEndpoint(ctx, mux, "localhost:8080", opts)
 
 	go func() {
@@ -53,6 +57,7 @@ func main() {
 	ch := make(chan os.Signal, 1)
 	signal.Notify(ch, os.Interrupt)
 	<-ch
+
 	s.Stop()
 	_ = lis.Close()
 }

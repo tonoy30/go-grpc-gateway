@@ -4,11 +4,33 @@ package calculator;
 
 option go_package = "./pb";
 
+import "google/api/annotations.proto";
+
 service CalculatorService {
-  rpc Add(Request) returns (Response);
-  rpc Sub(Request) returns (Response);
-  rpc Multiply(Request) returns (Response);
-  rpc Divide(Request) returns (Response);
+  rpc Add(Request) returns (Response) {
+    option(google.api.http) = {
+      post: "/v1/calculator/add",
+      body: "*"
+    };
+  };
+  rpc Sub(Request) returns (Response) {
+    option(google.api.http) = {
+      post: "/v1/calculator/sub",
+      body: "*"
+    };
+  };
+  rpc Multiply(Request) returns (Response) {
+    option(google.api.http) = {
+      post: "/v1/calculator/multiply",
+      body: "*"
+    };
+  };
+  rpc Divide(Request) returns (Response) {
+    option(google.api.http) = {
+      post: "/v1/calculator/divide",
+      body: "*"
+    };
+  };
 }
 
 message Request {

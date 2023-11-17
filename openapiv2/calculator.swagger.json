@@ -15,8 +15,150 @@
   "produces": [
     "application/json"
   ],
-  "paths": {},
+  "paths": {
+    "/v1/calculator/add": {
+      "post": {
+        "operationId": "CalculatorService_Add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/calculatorResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/calculatorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CalculatorService"
+        ]
+      }
+    },
+    "/v1/calculator/divide": {
+      "post": {
+        "operationId": "CalculatorService_Divide",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/calculatorResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/calculatorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CalculatorService"
+        ]
+      }
+    },
+    "/v1/calculator/multiply": {
+      "post": {
+        "operationId": "CalculatorService_Multiply",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/calculatorResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/calculatorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CalculatorService"
+        ]
+      }
+    },
+    "/v1/calculator/sub": {
+      "post": {
+        "operationId": "CalculatorService_Sub",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/calculatorResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/calculatorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CalculatorService"
+        ]
+      }
+    }
+  },
   "definitions": {
+    "calculatorRequest": {
+      "type": "object",
+      "properties": {
+        "num1": {
+          "type": "string",
+          "format": "int64"
+        },
+        "num2": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "calculatorResponse": {
       "type": "object",
       "properties": {
